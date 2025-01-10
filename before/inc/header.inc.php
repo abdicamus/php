@@ -15,8 +15,8 @@
     </title>
 </head>
 <body>
-  <header class="header-with-background" style="background-image: url('<?php if (isset($headerImage)) {
-      echo $headerImage;
+  <header class="header-with-background" style="background-image: url('<?php if (isset($headerImg)) {
+      echo $headerImg;
   } else {
       echo "pexels-rachel-claire-4577740.jpg";
   }
@@ -25,9 +25,13 @@
     <h1>Culinary Cove</h1>
     <p>Your sanctuary for exceptional flavors</p>
     <nav>
-      <a  href="our-mission.php">Our mission</a>
-      <a  href="ingredients.php">Ingredients</a>
-      <a  href="menu.php">Menu</a>
+        <?php if ($pageKey === 'mission'): ?>
+            <a class="active;" href="our-mission.php">Our mission</a>
+        <?php elseif($pageKey === 'ingredients'): ?>
+            <a class="active;" href="ingredients.php">Ingredients</a>
+        <?php else: ?>
+            <a class="active;" href="menu.php">Menu</a>
+        <?php endif; ?>
     </nav>
   </header>
 
