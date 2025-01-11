@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<?php $pageKey = 'mission' ?>
 <html lang="en">
 
 <head>
@@ -27,18 +26,16 @@
         <h1>Culinary Cove</h1>
         <p>Your sanctuary for exceptional flavors</p>
         <nav>
-            <a 
-                
+            <a
+                class="<?php if (!empty($pageKey) && $pageKey === 'mission') echo 'active'; ?>"
                 href="our-mission.php">Our mission</a>
-            <a 
-                class="<?php if(!empty($pageKey) && $pageKey === 'mission') echo 'active';?>"
-                
+            <a
+                class="<?php if (!empty($pageKey) && $pageKey === 'ingredients') echo 'active'; ?>"
                 href="ingredients.php">Ingredients</a>
-            <a 
-                <?php if (!empty($pageKey) && $pageKey === 'menu'): ?> class="active" 
-                <?php endif; ?>
+            <a
+                class="<?php if (!empty($pageKey) && $pageKey === 'menu') echo 'active'; ?>"
                 href="menu.php">Menu</a>
         </nav>
     </header>
 
-    <main>
+<main>
