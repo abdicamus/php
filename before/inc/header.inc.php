@@ -38,4 +38,4 @@
         </nav>
     </header>
 
-<main>
+</body>
