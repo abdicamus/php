@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<?php $pageKey = 'mission'?>
+<?php $pageKey = 'mission' ?>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,28 +12,33 @@
             echo $pageTitle;
         } else {
             echo "Default title";
-        }?>
+        } ?>
     </title>
 </head>
+
 <body>
-  <header class="header-with-background" style="background-image: url('<?php if (isset($headerImg)) {
-      echo $headerImg;
-  } else {
-      echo "pexels-rachel-claire-4577740.jpg";
-  }
-  ?>'); ">
+    <header class="header-with-background" style="background-image: url('<?php if (isset($headerImg)) {
+        echo $headerImg;
+    } else {
+        echo "pexels-rachel-claire-4577740.jpg";
+    }
+    ?>'); ">
 
-    <h1>Culinary Cove</h1>
-    <p>Your sanctuary for exceptional flavors</p>
-    <nav>
-        <?php if ($pageKey === 'mission'): ?>
-            <a class="active;" href="our-mission.php">Our mission</a>
-        <?php elseif($pageKey === 'ingredients'): ?>
-            <a class="active;" href="ingredients.php">Ingredients</a>
-        <?php else: ?>
-            <a class="active;" href="menu.php">Menu</a>
-        <?php endif; ?>
-    </nav>
-  </header>
+        <h1>Culinary Cove</h1>
+        <p>Your sanctuary for exceptional flavors</p>
+        <nav>
+            <a 
+                
+                href="our-mission.php">Our mission</a>
+            <a 
+                class="<?php if(!empty($pageKey) && $pageKey === 'mission') echo 'active';?>"
+                
+                href="ingredients.php">Ingredients</a>
+            <a 
+                <?php if (!empty($pageKey) && $pageKey === 'menu'): ?> class="active" 
+                <?php endif; ?>
+                href="menu.php">Menu</a>
+        </nav>
+    </header>
 
-  <main>
+    <main>
