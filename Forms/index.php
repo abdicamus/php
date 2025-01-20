@@ -22,23 +22,27 @@
         'tropical_tacos' => 'Tropical Tango Tacos',
     ];
 
-    $result = "";
-
     ?>
 
     <form method="GET" action="index.php">
         <select name="page">
             <option value="">Please select a recipe</option>
             <?php foreach ($pages as $key => $value): ?>
-                <option value="<?php echo $key ?>"><?php echo $value ?></option>
-                <?php $result = $key; ?>
+                <option
+                    value="<?php echo e($key) ?>" <?php if (!empty($_GET['page']) && $_GET['page'] == $key) echo 'selected' ?>><?php echo e($value) ?>
+                </option>
             <?php endforeach; ?>
         </select>
         <input type="submit" value="Submit!" />
     </form>
 
     <?php
-    echo $result;
+    if (!empty($_GET['page'])) {
+        $page = $_GET['page'];
+        if (in_array($page, $pages)) {
+            echo file_get_contents("Forms/pages/citrus_salmon.html");
+        }
+    }
     ?>
 
 </body>
