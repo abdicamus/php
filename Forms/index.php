@@ -29,7 +29,9 @@
             <option value="">Please select a recipe</option>
             <?php foreach ($pages as $key => $value): ?>
                 <option
-                    value="<?php echo e($key) ?>" <?php if (!empty($_GET['page']) && $_GET['page'] == $key) echo 'selected' ?>><?php echo e($value) ?>
+                    value="<?php echo e($key) ?>" 
+                    <?php if (!empty($_GET['page']) && $_GET['page'] == $key) echo 'selected';?>
+                    ><?php echo e($value); ?>
                 </option>
             <?php endforeach; ?>
         </select>
@@ -39,10 +41,11 @@
     <?php
     if (!empty($_GET['page'])) {
         $page = $_GET['page'];
-        if (in_array($page, $pages)) {
-            echo file_get_contents("Forms/pages/citrus_salmon.html");
+        if (!empty($pages[$page])) {
+            echo file_get_contents("./pages/{$page}.html");
         }
     }
+    var_dump($_GET);
     ?>
 
 </body>
