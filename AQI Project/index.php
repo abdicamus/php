@@ -1,13 +1,27 @@
 <?php
-/*
-$contents = file_get_contents(__DIR__ . '/../data/index.json');
-$data = json_decode($contents, true);
-var_dump($data);
-var_dump($data[0]['city']);
-*/
+require __DIR__ . '/inc/functions.inc.php';
 
-// echo filesize('__DIR__ . '/../data/singapore.json.bz2');
+$cities = json_decode(
+    file_get_contents(__DIR__ . "/data/index.json"),
+    true
+)
 
-// phpinfo();
-$data = json_decode(file_get_contents('compress.bzip2://' . __DIR__ . '/../data/singapore.json.bz2'), true);
-var_dump($data);
+?>
+
+<?php require __DIR__ . '/views/header.inc.php'; ?>
+
+<ul>
+    <?php foreach ($cities as $city): ?>
+        <a href="./city.php?<?php echo http_build_query(['city' => e($city['city'])]) ?>">
+            <li>
+                <?php echo e($city['city']) . ','; ?>
+                <?php echo e($city['country']) . ','; ?>
+                <?php echo e($city['flag']); ?>
+            </li>
+        </a>
+    <?php endforeach; ?>
+</ul>
+
+<a href="http://api.waqi.info/feed/almaty/?token=1320249ac3cde9d189c9e8c56cf889cdd5acf714">AQI</a>
+
+<?php require __DIR__ . '/views/footer.inc.php'; ?> 
