@@ -66,9 +66,47 @@ foreach ($results as $result) {
     <p>The city cannot be loaded.</p>
 <?php else: ?>
     <?php if (!empty($stats)): ?>
+        <canvas id="aqi-chart" style="width: 300px; height: 200px" ;></canvas>
+        <script src="scripts/chart.umd.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const ctx = document.getElementById('aqi-chart');
+                const chart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: [
+                            <?php foreach ($stats as $month => $measurements): ?>
+                                <?php echo e($month).','; ?>
+                            <?php endforeach; ?>
+                        ],
+                        datasets: [{
+                            label: 'PM 2.5 Concentration',
+                            data: [
+                                <?php foreach ($stats as $month => $measurements): ?>
+                                    <?php echo round(array_sum($measurements['pm25']) / count($measurements['pm25'])).','; ?>
+                                <?php endforeach; ?>
+                            ],
+                            fill: false,
+                            borderColor: 'rgb(75, 192, 192)',
+                            tension: 0.1
+                        }, {
+                            label: 'PM 10 Concentration',
+                            data: [
+                                <?php foreach ($stats as $month => $measurements): ?>
+                                    <?php echo round(array_sum($measurements['pm10']) / count($measurements['pm10'])).','; ?>
+                                <?php endforeach; ?>
+                            ],
+                            fill: false,
+                            borderColor: 'rgb(192, 89, 75)',
+                            tension: 0.1
+                        }],
+                    }
+                });
+            });
+        </script>
         <table>
             <thead>
-                <h1><?php echo $_GET['city'];?></h1>
+                <h1><?php echo $_GET['city']; ?></h1>
                 <tr>
                     <th>Month</th>
                     <th>PM 2.5 concentration</th>
