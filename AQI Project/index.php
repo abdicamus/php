@@ -22,6 +22,4 @@ $cities = json_decode(
     <?php endforeach; ?>
 </ul>
 
-<a href="http://api.waqi.info/feed/almaty/?token=1320249ac3cde9d189c9e8c56cf889cdd5acf714">AQI</a>
-
 <?php require __DIR__ . '/views/footer.inc.php'; ?> 
