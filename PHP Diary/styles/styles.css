@@ -1,0 +1,232 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-family: system-ui, -apple-system, 
+        "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", 
+        "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", 
+        "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.nav {
+    background-color: rgb(26, 50, 65);
+    height: 4rem;
+}
+
+.nav__layout {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+.nav-brand {
+    display: block;
+    height: 4rem;
+    font-size: 25px;
+    line-height: 4rem;
+    text-decoration: none;
+    color: white;
+}
+
+.nav-brand__image {
+    width: 3rem;
+    height: 3rem;
+    vertical-align: middle;
+    color: red;
+}
+
+.nav-brand:hover .nav-brand__image {
+    color: rgb(255, 64, 64);
+}
+
+.button {
+    background-color: rgb(224, 99, 67);
+    color: white;
+    text-decoration: none;
+    border-radius: 0.5rem;
+    padding: 0rem 1rem;
+    font-size: 1rem;
+    line-height: 2.5rem;
+}
+
+.button:hover {
+    background-color: rgb(209, 80, 48);
+}
+
+.button_icon {
+    color: white;
+    width: 1.5rem;
+    height: 1.5rem;
+    position: relative;
+    top: 0.3rem;
+    margin-right: 0.3rem;
+}
+
+.main-header {
+    display: flex;
+    color: rgb(26, 50, 65);
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 3.5rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+
+.container {
+    width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin: 0 auto;              
+}
+
+@media (min-width: 576px) {
+    .container {
+        max-width: 540px;
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        max-width: 720px;
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        max-width: 960px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
+}
+
+@media (min-width: 1400px) {
+    .container {
+        max-width: 1320px;
+    }
+}
+
+.main {
+    position: relative;
+    overflow: hidden;
+}
+
+.main::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: -1rem;
+    background-image: url("/images/bg-lines.svg");
+    background-position: right center;
+    background-size: cover;
+    width: 10rem;
+    bottom: 0rem
+}
+
+.card {
+    display: flex;
+    background-color: rgb(243, 244, 245);
+    margin-bottom: 1.5rem;
+    border-radius: 1rem;
+    padding: 0rem;
+    overflow: hidden;
+    flex-direction: column;
+    box-shadow: 0rem 0.5rem 1rem rgba(0, 0, 0, 0.5);
+}
+
+@media (min-width: 768px) {
+    .card {
+        flex-direction: row;
+    }
+}
+
+.card__header {
+    font-size: 1.3rem;
+    color: rgb(26, 50, 65);
+}
+
+.card__header::after {
+    content: "";
+    background-color: green;
+    display: block;
+    width: 6rem;
+    height: 0.125rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.card__image {
+    display: block;
+    height: 7.5rem;
+    width: 100%;
+    object-fit: cover;
+    box-shadow: 0rem 0.25rem 0.5rem rgb(0, 0, 0, 0.1);
+}
+
+@media (min-width: 768px) {
+    .card__image {
+        width: 15rem;
+        height: 2rem;
+        min-height: 100%;
+        box-shadow: 0.1rem 0rem 0.5rem rgb(0, 0, 0, 0.5);
+    }
+}
+
+.card__desc-time {
+    color: green;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding-top: 1rem;
+}
+
+.card__paragraph {
+    color: rgb(26, 50, 65);
+    font-size: 1.25em;
+}
+
+.card__desc-container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.pagination {
+    display: flex;
+    list-style-type: none;
+    justify-content: flex-end;
+}
+
+.pagination__link {
+    display: block;
+    border: 0.100rem solid grey;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    width: 2rem;
+    height: 2rem;
+    color: rgb(14, 93, 14);
+    margin-left: 0.5rem;
+    text-align: center;
+    line-height: 1.75rem;
+    font-weight: bold;
+}
+
+.pagination__link:hover {
+    color: white;
+    background-color: rgb(28, 159, 28);
+    border: 0.100rem solid green;
+}
+
+.pagination__link--active {
+    border: 0.125rem solid rgb(130, 180, 82);
+}
+
+.pagination__link--arrow {
+    color: white;
+    background-color: rgb(130, 180, 82);
+    border: 0.100rem solid rgb(130, 180, 82);
+}
