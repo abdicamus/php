@@ -117,7 +117,8 @@ html {
     overflow: hidden;
 }
 
-.main::before {
+.main::before, 
+.main::after {
     content: "";
     display: block;
     position: absolute;
@@ -126,7 +127,17 @@ html {
     background-position: right center;
     background-size: cover;
     width: 10rem;
-    bottom: 0rem
+    bottom: 0rem;
+    z-index: -1;
+}
+
+.main::before {
+    left: 0;
+}
+
+.main::after {
+    transform: scaleX(-1);
+    right: 0;
 }
 
 .card {
