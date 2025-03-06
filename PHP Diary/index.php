@@ -13,7 +13,7 @@
     <!-- Подключение к файлу с базами данных -->
     <?php include __DIR__ . "/config.php"; ?>
     <!-- -->
-    <?php 
+    <?php
     $dir = opendir(__DIR__ . '/images');
     $currentFile = readdir($dir);
     while (($currentFile = readdir($dir)) !== false) {
@@ -46,18 +46,20 @@
     <main class="main">
         <div class="container">
             <h1 class="main-header">Entries</h1>
-            <?php $counter = 0; foreach ($result as $item): ?>
-                <div class="card"> 
+            <?php $counter = 0;
+            foreach ($result as $item): ?>
+                <div class="card">
                     <div class="card__image-container">
-                        <img class="card__image" src="<?php echo '/images//'. e($images[$counter]); ?>" alt="">
+                        <img class="card__image" src="<?php echo __DIR__ . '/images/' . e($images[$counter]); ?>" alt="">
                     </div>
                     <div class="card__desc-container">
-                        <div class="card__desc-time">Week 1</div>
+                        <div class="card__desc-time">Неделя 1</div>
                         <h3 class="card__header"><?php echo e($item['title']); ?></h3>
                         <p class="card__paragraph"><?php echo e($item['content']); ?></p>
                     </div>
                 </div>
-            <?php $counter++; endforeach; ?>
+            <?php $counter++;
+            endforeach; ?>
             <ul class="pagination">
                 <li class="pagination__li">
                     <a class="pagination__link pagination__link--arrow" href="#">⏴</a>
@@ -80,6 +82,12 @@
             </ul>
         </div>
     </main>
+    <footer class="footer">
+        <div class="container">
+            <h3 class="footer__header-container">PHP Diary проект</h3>
+            <p class="footer__paragraph-container">Этот проект дневника PHP позволяет пользователям<br> систематически документировать и размышлять о своем<br> учебном пути, повышая удержание и предоставляя ценную<br> информацию о своем личностном росте и развитии.</p>
+        </div>
+    </footer>
 </body>
 
 </html>

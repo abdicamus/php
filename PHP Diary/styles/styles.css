@@ -228,7 +228,7 @@ html {
 
 .pagination__link:hover {
     color: white;
-    background-color: rgb(28, 159, 28);
+    background-color: rgb(128, 182, 142);
     border: 0.100rem solid green;
 }
 
@@ -240,4 +240,29 @@ html {
     color: white;
     background-color: rgb(130, 180, 82);
     border: 0.100rem solid rgb(130, 180, 82);
+}
+
+.footer {
+    background-color: rgb(26, 50, 65);
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+.footer::after {
+    content: "";
+    display: block;
+    position: relative;
+    background-color: white;
+    width: 7.5rem;
+    height: 0.1rem;
+    margin: 0 auto;
+}
+
+.footer__header-container {
+    color: white;
+}
+
+.footer__paragraph-container {
+    color: rgb(128, 182, 142);
+    line-height: 1.33em;
 }
