@@ -50,7 +50,7 @@
             foreach ($result as $item): ?>
                 <div class="card">
                     <div class="card__image-container">
-                        <img class="card__image" src="<?php echo __DIR__ . '/images/' . e($images[$counter]); ?>" alt="">
+                        <img class="card__image" src="<?php echo __DIR__ . '/images/' . e($images[$counter]); ?>" alt="Изображение <?php echo $counter; ?>">
                     </div>
                     <div class="card__desc-container">
                         <div class="card__desc-time">Неделя 1</div>
