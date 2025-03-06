@@ -18,7 +18,6 @@ html {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    
 }
 
 .nav-brand {
@@ -265,4 +264,38 @@ html {
 .footer__paragraph-container {
     color: rgb(128, 182, 142);
     line-height: 1.33em;
+}
+
+.container-form {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    width: 70rem;
+    margin: 0 auto;
+    gap: 1rem;
+}
+
+.input__title, .input__date {
+    display: flex;
+    margin: 0 auto;
+    height: 3rem;
+    width: 100%;
+    border-radius: 0.75rem;
+    padding-left: 1rem;
+}
+
+.input__title::placeholder, .input__date::placeholder {
+    color: rgb(26, 50, 65);
+    font-weight: bold;
+}
+
+.input__content {
+    display: flex;
+    margin: 0 auto;
+    height: 100%;
+    min-height: 30rem;
+    width: 100%;
+    resize: none;
+    border-radius: 0.75rem;
 }
