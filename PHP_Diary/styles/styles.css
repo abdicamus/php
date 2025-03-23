@@ -122,7 +122,7 @@ html {
     display: block;
     position: absolute;
     top: -1rem;
-    background-image: url("/images/bg-lines.svg");
+    background-image: url("Images/bg-lines.svg");
     background-position: right center;
     background-size: cover;
     width: 10rem;
