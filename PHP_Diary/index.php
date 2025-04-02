@@ -1,28 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="./styles/normalize.css">
-    <link rel="stylesheet" type="text/css" href="./styles/styles.css">
-    <title>PHP Diary</title>
-</head>
-
-<body>
-    <!-- Подключение к файлу с базами данных -->
-    <?php include __DIR__ . "/config.php"; ?>
-    <!-- -->
-    <?php
-    $dir = opendir(__DIR__ . '/images');
-    $currentFile = readdir($dir);
-    while (($currentFile = readdir($dir)) !== false) {
-        if ($currentFile === '.' || $currentFile === '..') continue;
-        $images[] = $currentFile;
-    }
-    ?>
-    <nav class="nav">
-        <div class="container">
+<?php require __DIR__ . "/views/header.view.php"; ?>
             <div class="nav__layout">
                 <a href="index.html" class="nav-brand">
                     <svg class="nav-brand__image" viewBox="0 0 24 24">
@@ -30,7 +6,7 @@
                     </svg>
                     PHP Diary
                 </a>
-                <a href="form.html" class="button">
+                <a href="form.php" class="button">
                     <svg class="button_icon" viewBox="0 0 44.4901230052 44.4901230053">
                         <g style="fill: none;stroke: #f3f4f5;stroke-linecap: round;stroke-linejoin: round;stroke-width: 2px;">
                             <circle cx="22.2450615026" cy="22.2450615026" r="21.2450615026" />
@@ -80,14 +56,4 @@
                     <a class="pagination__link pagination__link--arrow" href="#">⏵</a>
                 </li>
             </ul>
-        </div>
-    </main>
-    <footer class="footer">
-        <div class="container">
-            <h3 class="footer__header-container">PHP Diary проект</h3>
-            <p class="footer__paragraph-container">Этот проект дневника PHP позволяет пользователям<br> систематически документировать и размышлять о своем<br> учебном пути, повышая удержание и предоставляя ценную<br> информацию о своем личностном росте и развитии.</p>
-        </div>
-    </footer>
-</body>
-
-</html>
+<?php require __DIR__ . "/views/footer.view.php"; ?>
