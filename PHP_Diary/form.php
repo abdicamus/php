@@ -1,4 +1,19 @@
-<?php var_dump($_GET);require __DIR__ . "/views/header.view.php";?>
+<?php 
+require __DIR__ . "/views/header.view.php";
+
+if (!empty($_GET)) {
+    $title = (string) ($_GET['title'] ?? '');
+    $date = (string) ($_GET['date'] ?? '');
+    $content = (string) ($_GET['content'] ?? '');
+
+    $stmt = $pdo->prepare('INSERT INTO `diary` (`title`, `date` `content`) VALUES (:title, :date, :content)');
+    $stmt->bindValue(':title', $title);
+    $stmt->bindValue(':date', $date);
+    $stmt->bindValue(':content', $content);
+    $stmt->execute(); 
+}
+
+?>
 <div class="nav__layout">
     <a href="index.html" class="nav-brand">
         <svg class="nav-brand__image" viewBox="0 0 24 24">
