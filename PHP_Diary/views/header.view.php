@@ -10,9 +10,6 @@
 </head>
 
 <body>
-    <!-- Подключение к файлу с базами данных -->
-    <?php require __DIR__ . "/../inc/config.php"; ?>
-    <!-- -->
     <?php
     $dir = opendir(__DIR__ . '/../images');
     $currentFile = readdir($dir);

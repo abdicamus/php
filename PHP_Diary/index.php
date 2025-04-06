@@ -1,4 +1,7 @@
-<?php var_dump($_GET);require __DIR__ . "/views/header.view.php"; ?>
+<?php 
+require __DIR__ . "/views/header.view.php"; 
+require __DIR__ . "/inc/config.php";
+?>
             <div class="nav__layout">
                 <a href="index.html" class="nav-brand">
                     <svg class="nav-brand__image" viewBox="0 0 24 24">

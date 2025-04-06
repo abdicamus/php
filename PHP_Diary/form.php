@@ -1,12 +1,13 @@
-<?php 
-require __DIR__ . "/views/header.view.php";
+<?php
 
-if (!empty($_GET)) {
-    $title = (string) ($_GET['title'] ?? '');
-    $date = (string) ($_GET['date'] ?? '');
-    $content = (string) ($_GET['content'] ?? '');
+require __DIR__ . "/inc/config.php";
 
-    $stmt = $pdo->prepare('INSERT INTO `diary` (`title`, `date` `content`) VALUES (:title, :date, :content)');
+if (!empty($_POST)) {
+    $title = (string) ($_POST['title'] ?? '');
+    $date = ($_POST['date'] ?? '');
+    $content = (string) ($_POST['content'] ?? '');
+
+    $stmt = $pdo->prepare('INSERT INTO `diary` (`title`, `content`, `date`) VALUES (:title, :content, :date)');
     $stmt->bindValue(':title', $title);
     $stmt->bindValue(':date', $date);
     $stmt->bindValue(':content', $content);
@@ -14,6 +15,8 @@ if (!empty($_GET)) {
 }
 
 ?>
+
+<?php require __DIR__ . "/views/header.view.php";?>
 <div class="nav__layout">
     <a href="index.html" class="nav-brand">
         <svg class="nav-brand__image" viewBox="0 0 24 24">
@@ -26,7 +29,7 @@ if (!empty($_GET)) {
 </nav>
 <main class="main">
     <h1 class="main-header">New Entry</h1>
-    <form action="GET" action="form.php">
+    <form action="POST" action="form.php">
         <div class="container-form">
             <input class="input__title" type="text" placeholder="TITLE:" id="title" name="title" required>
             <input class="input__date" type="date" placeholder="DATE:" id="date" name="date" required>
