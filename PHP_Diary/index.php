@@ -27,12 +27,13 @@ require __DIR__ . "/inc/config.php";
             <h1 class="main-header">Entries</h1>
             <?php $counter = 0;
             foreach ($result as $item): ?>
+                <?php if ($counter === count($result) - 1) $counter = 0; ?>
                 <div class="card">
                     <div class="card__image-container">
                         <img class="card__image" src="<?php echo 'images/' . e($images[$counter]); ?>" alt="Изображение <?php echo $counter; ?>">
                     </div>
                     <div class="card__desc-container">
-                        <div class="card__desc-time">Неделя 1</div>
+                        <div class="card__desc-time"><?php echo e($item['date']); ?></div>
                         <h3 class="card__header"><?php echo e($item['title']); ?></h3>
                         <p class="card__paragraph"><?php echo e($item['content']); ?></p>
                     </div>
