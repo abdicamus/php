@@ -3,15 +3,22 @@
 require __DIR__ . "/inc/config.php";
 
 if (!empty($_POST)) {
+    var_dump($_POST);
     $title = (string) ($_POST['title'] ?? '');
     $date = ($_POST['date'] ?? '');
     $content = (string) ($_POST['content'] ?? '');
 
-    $stmt = $pdo->prepare('INSERT INTO `diary` (`title`, `content`, `date`) VALUES (:title, :content, :date)');
-    $stmt->bindValue(':title', $title);
-    $stmt->bindValue(':date', $date);
-    $stmt->bindValue(':content', $content);
-    $stmt->execute(); 
+    try {
+        $stmt = $pdo->prepare('INSERT INTO `diary` (`title`, `content`, `date`) VALUES (:title, :content, :date)');
+        $stmt->bindValue(':title', $title);
+        $stmt->bindValue(':date', $date);
+        $stmt->bindValue(':content', $content);
+        $stmt->execute();
+    } catch (PDOException $e) {
+        echo "Ошибка: " . $e->getMessage();
+    } 
+
+    $_POST = [];
 }
 
 ?>
@@ -29,12 +36,11 @@ if (!empty($_POST)) {
 </nav>
 <main class="main">
     <h1 class="main-header">New Entry</h1>
-    <form action="POST" action="form.php">
+    <form method="POST" action="form.php">
         <div class="container-form">
             <input class="input__title" type="text" placeholder="TITLE:" id="title" name="title" required>
             <input class="input__date" type="date" placeholder="DATE:" id="date" name="date" required>
-            <textarea class="input__content" type="text">
-            </textarea>
+            <textarea class="input__content" type="text" name="content" id="content"></textarea>
             <button class="form__button" type="submit">Submit</button>
         </div>
     </form>
