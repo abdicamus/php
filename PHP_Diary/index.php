@@ -1,6 +1,18 @@
 <?php 
 require __DIR__ . "/views/header.view.php"; 
 require __DIR__ . "/inc/config.php";
+
+$perPage = 5;
+$page = (int) ($_GET['page'] ?? 1);
+
+$offset = ($page - 1) * $perPage;
+
+$stmt = $pdo->prepare("SELECT * FROM `diary` ORDER BY `date` ASC LIMIT :limit OFFSET :offset");
+$stmt->bindValue(':limit', $perPage, PDO::PARAM_INT);
+$stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+$stmt->execute();
+$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
             <div class="nav__layout">
                 <a href="index.html" class="nav-brand">

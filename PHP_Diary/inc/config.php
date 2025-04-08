@@ -8,7 +8,7 @@ $pdo = new PDO("mysql:host=localhost:8889;dbname=php_diary", "root", "root", [
     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
 ]);
 
-$stmt = $pdo->prepare("SELECT * FROM `diary`");
+$stmt = $pdo->prepare("SELECT * FROM `diary` ORDER BY `date` ASC LIMIT 10");
 $stmt->execute();
 $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
