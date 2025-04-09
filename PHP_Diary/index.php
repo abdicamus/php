@@ -7,6 +7,12 @@ $page = (int) ($_GET['page'] ?? 1);
 
 $offset = ($page - 1) * $perPage;
 
+$stmtCount = $pdo->prepare("SELECT COUNT(*) AS `count` FROM `diary`");
+$stmtCount->execute();
+$count = $stmtCount->fetch(PDO::FETCH_ASSOC)['count'];
+
+$numPages = ceil($count / $perPage);
+
 $stmt = $pdo->prepare("SELECT * FROM `diary` ORDER BY `date` ASC LIMIT :limit OFFSET :offset");
 $stmt->bindValue(':limit', $perPage, PDO::PARAM_INT);
 $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
@@ -56,18 +62,15 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <li class="pagination__li">
                     <a class="pagination__link pagination__link--arrow" href="#">⏴</a>
                 </li>
-                <li class="pagination__li">
-                    <a class="pagination__link pagination__link--active" href="#">1</a>
-                </li>
-                <li class="pagination__li">
-                    <a class="pagination__link" href="#">2</a>
-                </li>
-                <li class="pagination__li">
-                    <a class="pagination__link" href="#">3</a>
-                </li>
-                <li class="pagination__li">
-                    <a class="pagination__link" href="#">4</a>
-                </li>
+                <?php for($x = 1; $x <= $numPages; $x++): ?>
+                    <li class="pagination__li">
+                        <a 
+                            class="pagination__link <?php if ($page === $x) echo "pagination__link--active"; ?>" 
+                            href="index.php?<?php echo http_build_query(['page' => $x]); ?>">
+                            <?php echo $x; ?>
+                        </a>
+                    </li>
+                <?php endfor; ?>
                 <li class="pagination__li">
                     <a class="pagination__link pagination__link--arrow" href="#">⏵</a>
                 </li>
