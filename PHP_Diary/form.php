@@ -41,7 +41,7 @@ if (!empty($_POST)) {
             <input class="input__title" type="text" placeholder="TITLE:" id="title" name="title" required>
             <input class="input__date" type="date" placeholder="DATE:" id="date" name="date" required>
             <textarea class="input__content" type="text" name="content" id="content"></textarea>
-            <button class="form__button" type="submit">Submit</button>
+            <button class="form__button" type="submit">Save</button>
         </div>
     </form>
 <?php require __DIR__ . "/views/footer.view.php"; ?>
