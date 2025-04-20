@@ -2,6 +2,9 @@
 require __DIR__ . "/views/header.view.php";
 require __DIR__ . "/inc/config.php";
 
+date_default_timezone_set('Asia/Almaty');
+$dateFormat = "d.M.Y";
+
 $perPage = 5;
 $page = (int) ($_GET['page'] ?? 1);
 
@@ -53,7 +56,11 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     alt="Изображение <?php echo $counter; ?>">
             </div>
             <div class="card__desc-container">
-                <div class="card__desc-time"><?php echo e($item['date']); ?></div>
+                <div class="card__desc-time">
+                    <?php 
+                        $date = new DateTime($item['date']);
+                        echo $date->format($dateFormat);
+                    ?></div>
                 <h3 class="card__header"><?php echo e($item['title']); ?></h3>
                 <p class="card__paragraph"><?php echo e($item['content']); ?></p>
             </div>
